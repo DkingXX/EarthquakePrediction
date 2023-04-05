@@ -1,0 +1,18 @@
+authorName: default
+experimentName: example
+trialConcurrency: 4
+maxTrialNum: 10
+trainingServicePlatform: local
+searchSpacePath: search_space.json
+useAnnotation: false
+tuner:
+  builtinTunerName: GridSearch
+trial:
+  command: python training.py --opt True --idx 51 --model BiLSTM
+  codeDir: .
+  gpuNum: 2
+# 当trainingServicePlatform为local时添加如下语句
+localConfig:
+  useActiveGpu: true
+  maxTrialNumPerGpu: 2
+  gpuIndices: "6,7"   # 使用的GPU编号
